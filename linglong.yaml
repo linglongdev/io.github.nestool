@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.nestool
+  name: nestool
+  version: 0.0.0.2
+  kind: app
+  description: |
+    Cross Platform replacement of NES Screen Tool
+
+command:
+  - /opt/apps/io.github.nestool/files/bin/nestool
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/jpwhiting/nestool.git
+    version: master
+    commit: bcebda54a3ab24fc5d60294815305e418f99beee
+
+build: |
+  cd /project/linglong/sources/nestool.git
+  git apply ../../../0001-install.patch
+  cp src/icon.png src/nestool.png
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
+
