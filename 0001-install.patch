@@ -1,0 +1,48 @@
+From 31d66ec4cf65ffcfbbd4f7054af2b8d88d493567 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Wed, 21 Aug 2024 16:31:00 +0800
+Subject: [PATCH] install
+
+---
+ src/nestool.desktop | 11 +++++++++++
+ src/src.pro         |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 src/nestool.desktop
+
+diff --git a/src/nestool.desktop b/src/nestool.desktop
+new file mode 100644
+index 0000000..47203ef
+--- /dev/null
++++ b/src/nestool.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=nestool
++Name=nestool
++Name[zh_CN]=nestool
++Icon=nestool
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=nestool
++Version=0.2
+\ No newline at end of file
+diff --git a/src/src.pro b/src/src.pro
+index c7ddb8c..461ae93 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -50,3 +50,11 @@ FORMS    += \
+ 
+ RESOURCES += \
+     nestool.qrc
++
++target.path = $$PREFIX/bin
++desktop.files = nestool.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = nestool.png
++
++INSTALLS += target desktop icons
+-- 
+2.43.4
+
